@@ -57,7 +57,9 @@ body {
 
 .record-player-wrapper {
   position: relative;
+  width: min(88vw, 420px);
   display: block;
+  margin-inline: auto;
   transform: translateZ(0);
   will-change: transform, opacity;
 }
@@ -84,16 +86,14 @@ body {
 
 .record-player-stack {
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   z-index: 2;
+  pointer-events: none;
   will-change: transform, opacity;
 }
 
 .record-player-image--secondary {
-  width: min(84%, 330px);
-  margin-left: auto;
+  width: 100%;
   border-radius: 12px;
   opacity: 1;
   box-shadow:

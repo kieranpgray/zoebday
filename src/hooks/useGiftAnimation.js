@@ -53,14 +53,17 @@ export function useGiftAnimation({
       })
       gsap.set(primaryImageRef.current, {
         autoAlpha: 1,
-        y: 30,
+        y: 34,
+        x: 0,
+        rotation: 0,
         scale: 0.95,
         force3D: true,
       })
       gsap.set(stackedImageRef.current, {
-        y: 90,
-        x: 18,
-        scale: 0.95,
+        y: 106,
+        x: 32,
+        rotation: 4,
+        scale: 0.92,
         autoAlpha: 0,
         force3D: true,
       })
@@ -124,11 +127,11 @@ export function useGiftAnimation({
           .to(boxBodyRef.current, { autoAlpha: 0.22, y: 8, duration: 0.9 }, 'sideDrop')
           .set(playerRef.current, { zIndex: 7 }, 'playerReveal')
           .to(playerRef.current, { y: isMobile ? 16 : 18, autoAlpha: 1, scale: 1, duration: 0.95 }, 'playerReveal')
-          .to(primaryImageRef.current, { y: 12, autoAlpha: 1, scale: 1, duration: 0.7 }, 'playerReveal+=0.08')
+          .to(primaryImageRef.current, { y: 0, x: 0, rotation: -1, autoAlpha: 1, scale: 1, duration: 0.78 }, 'playerReveal+=0.08')
           .to(playerRef.current, { y: isMobile ? 12 : 14, duration: 0.72 }, 'playerSettle')
           .to(
             stackedImageRef.current,
-            { y: 30, x: isMobile ? 8 : 12, scale: 0.97, autoAlpha: 1, duration: 0.88 },
+            { y: isMobile ? 18 : 24, x: isMobile ? 12 : 20, rotation: 3, scale: 0.95, autoAlpha: 1, duration: 0.88 },
             'stackedReveal',
           )
       } else {
@@ -186,11 +189,11 @@ export function useGiftAnimation({
           .to(boxBodyRef.current, { opacity: 0.22, y: 8, duration: 1.02 }, 'frontRearFold+=0.08')
           .set(playerRef.current, { zIndex: 7 }, 'playerReveal')
           .to(playerRef.current, { y: 18, autoAlpha: 1, scale: 1, duration: 1.02 }, 'playerReveal')
-          .to(primaryImageRef.current, { y: 10, autoAlpha: 1, scale: 1, duration: 0.84 }, 'playerReveal+=0.14')
+          .to(primaryImageRef.current, { y: 0, x: 0, rotation: -1, autoAlpha: 1, scale: 1, duration: 0.84 }, 'playerReveal+=0.14')
           .to(playerRef.current, { y: 14, duration: 0.8 }, 'playerSettle')
           .to(
             stackedImageRef.current,
-            { y: 28, x: 10, scale: 0.97, autoAlpha: 1, duration: 1.02 },
+            { y: 24, x: 20, rotation: 3, scale: 0.95, autoAlpha: 1, duration: 1.02 },
             'stackedReveal',
           )
       }
