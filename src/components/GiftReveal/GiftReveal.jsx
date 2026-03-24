@@ -19,6 +19,7 @@ export default function GiftReveal() {
   const lidRef = useRef(null)
   const boxBodyRef = useRef(null)
   const playerRef = useRef(null)
+  const primaryImageRef = useRef(null)
   const stackedImageRef = useRef(null)
 
   const giftBoxInstanceRef = useRef(null)
@@ -40,6 +41,7 @@ export default function GiftReveal() {
   const assignRecordPlayerRef = useCallback((instance) => {
     recordPlayerInstanceRef.current = instance
     playerRef.current = instance?.wrapper ?? null
+    primaryImageRef.current = instance?.primaryImage ?? null
     stackedImageRef.current = instance?.secondaryWrapper ?? null
   }, [])
 
@@ -63,6 +65,7 @@ export default function GiftReveal() {
     lidRef,
     boxBodyRef,
     playerRef,
+    primaryImageRef,
     stackedImageRef,
     onRevealComplete: handleRevealComplete,
     onRevealReverse: handleRevealReverse,

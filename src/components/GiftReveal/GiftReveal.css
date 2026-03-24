@@ -7,14 +7,14 @@
   padding: clamp(5rem, 13vh, 9rem) 1.5rem;
   background:
     radial-gradient(
-      circle at 18% 26%,
-      color-mix(in oklch, var(--colour-rose-accent) 14%, transparent),
-      transparent 48%
+      ellipse at 50% 78%,
+      color-mix(in oklch, var(--colour-gold-accent) 16%, transparent) 0%,
+      transparent 64%
     ),
     radial-gradient(
-      circle at 82% 20%,
-      color-mix(in oklch, var(--colour-gold-accent) 14%, transparent),
-      transparent 55%
+      circle at 22% 20%,
+      color-mix(in oklch, var(--colour-rose-accent) 10%, transparent),
+      transparent 52%
     ),
     transparent;
   overflow: hidden;
@@ -29,26 +29,45 @@
 }
 
 .gift-reveal::before {
-  inset: clamp(1rem, 2.2vw, 1.8rem);
+  inset: clamp(1.1rem, 2.2vw, 2rem);
 }
 
 .gift-reveal::after {
-  inset: clamp(1.7rem, 3.5vw, 2.9rem);
-  border-color: color-mix(in oklch, var(--colour-rose-accent) 20%, transparent);
+  inset: clamp(2rem, 3.8vw, 3.1rem);
+  border-color: color-mix(in oklch, var(--colour-gold-accent) 16%, transparent);
 }
 
 .gift-reveal__stage {
   position: relative;
-  width: min(94vw, 720px);
-  min-height: 560px;
+  width: min(92vw, 660px);
+  min-height: 590px;
   display: grid;
   place-items: center;
+  perspective: 1400px;
+  transform-style: preserve-3d;
+}
+
+.gift-reveal__stage::after {
+  content: '';
+  position: absolute;
+  left: 16%;
+  right: 16%;
+  bottom: 17%;
+  height: 22px;
+  border-radius: 999px;
+  background: color-mix(in oklch, var(--colour-plum-ink) 30%, transparent);
+  filter: blur(8px);
+  opacity: 0.3;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .gift-box-wrapper {
   position: relative;
   width: min(84vw, 356px);
   aspect-ratio: 13 / 10;
+  transform-style: preserve-3d;
+  z-index: 2;
 }
 
 .box-body,
@@ -74,6 +93,8 @@
     0 28px 56px color-mix(in oklch, var(--colour-text-dark) 24%, transparent),
     inset 0 0 0 1px color-mix(in oklch, var(--colour-white) 30%, transparent);
   z-index: 1;
+  will-change: opacity, transform;
+  transform: translateZ(0);
 }
 
 .flap-left,
@@ -86,6 +107,7 @@
   border-radius: 0.9rem;
   backface-visibility: hidden;
   z-index: 4;
+  will-change: transform, opacity;
 }
 
 .flap-left {
@@ -127,6 +149,7 @@
     inset 0 0 0 1px color-mix(in oklch, var(--colour-white) 34%, transparent);
   transform-origin: center bottom;
   z-index: 6;
+  will-change: transform, opacity;
 }
 
 .ribbon-h,
@@ -139,6 +162,7 @@
   );
   border-radius: 999px;
   transform-origin: center;
+  will-change: transform, opacity;
 }
 
 .ribbon-h {
@@ -184,14 +208,37 @@
 
 .record-player-wrapper {
   position: absolute;
-  width: min(88vw, 420px);
+  width: min(84vw, 390px);
+  bottom: 10%;
   z-index: 0;
+  pointer-events: none;
+  filter: saturate(1.04) contrast(1.02);
+}
+
+.record-player-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: -7% -7% -9%;
+  background:
+    radial-gradient(
+      ellipse at 50% 72%,
+      color-mix(in oklch, var(--colour-gold-accent) 18%, transparent) 0%,
+      transparent 62%
+    ),
+    radial-gradient(
+      ellipse at 18% 32%,
+      color-mix(in oklch, var(--colour-rose-accent) 10%, transparent) 0%,
+      transparent 52%
+    );
+  opacity: 0.52;
+  z-index: -1;
   pointer-events: none;
 }
 
 @media (max-width: 767px) {
   .gift-reveal__stage {
-    min-height: 460px;
+    width: min(95vw, 540px);
+    min-height: 520px;
   }
 
   .gift-reveal::before {
@@ -199,11 +246,16 @@
   }
 
   .gift-reveal::after {
-    inset: 1.2rem;
+    inset: 1.4rem;
   }
 
   .flap-left,
   .flap-right {
     height: 52%;
+  }
+
+  .record-player-wrapper {
+    width: min(88vw, 360px);
+    bottom: 7%;
   }
 }
