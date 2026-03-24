@@ -1,0 +1,60 @@
+# Birthday Card — Cursor AI Rules
+
+## Project
+Single-page interactive birthday card. Personal, emotional experience — not a product or marketing
+site. The audience is one person. Optimise for feel, not for scalability.
+
+## Stack (locked — do not deviate)
+- React + Vite (JavaScript, not TypeScript)
+- GSAP 3 + ScrollTrigger for all scroll-linked animation
+- Lenis for smooth scrolling
+- Plain CSS with custom properties (no CSS-in-JS, no Tailwind, no styled-components)
+- No UI component libraries (no MUI, Chakra, Radix, shadcn, etc.)
+
+## Critical animation rules
+- ALL gift reveal animation uses GSAP ScrollTrigger with `scrub: 1` — must be fully reversible
+- Never use CSS transitions or animations for the gift reveal sequence — GSAP only
+- Register GSAP plugins once in main.jsx: `gsap.registerPlugin(ScrollTrigger)`
+- Use `useLayoutEffect` + `gsap.context()` for all GSAP in components; clean up on unmount
+- Lenis must integrate with GSAP ticker: `gsap.ticker.add((time) => lenis.raf(time * 1000))`
+- The GiftReveal section must use `pin: true` on its ScrollTrigger so it stays on screen during
+  the animation sequence
+
+## Code conventions
+- Functional components only, no class components
+- Animation logic lives in custom hooks (src/hooks/), not inline in JSX
+- All colour values via CSS custom properties from tokens.css — never hardcode hex in components
+- Component files: PascalCase.jsx
+- Hook files: use[Name].js
+- Asset files in public/assets/: kebab-case. Turntable reveal asset must preserve transparency and use `turntable-front.png` (transparent background required)
+
+## Required folder structure
+src/
+  components/
+    Hero.jsx
+    PersonalMessage.jsx
+    GiftReveal/
+      GiftReveal.jsx         # section wrapper + ScrollTrigger orchestration
+      GiftBox.jsx            # SVG present box, exposes layer refs
+      RecordPlayer.jsx       # image + post-reveal micro-animations
+  hooks/
+    useLenis.js              # Lenis init + GSAP ticker integration
+    useGiftAnimation.js      # GSAP timeline, accepts layer refs
+  styles/
+    tokens.css               # CSS custom properties
+    globals.css              # resets, body styles, ambient float keyframes
+  App.jsx                    # section assembly only — no logic here
+  main.jsx                   # GSAP plugin registration
+public/
+  assets/
+    turntable-front.png        # transparent background (required)
+    turntable-side.jpg
+    turntable-open.jpg
+
+## Do not
+- Add routing or multiple pages
+- Add backend, API calls, or localStorage
+- Hardcode colour hex values in component files
+- Use ScrollTrigger toggleActions for the gift reveal (must use scrub)
+- Install additional animation libraries (no Framer Motion, Anime.js, etc.)
+- Add a README unless asked

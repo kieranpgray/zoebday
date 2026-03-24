@@ -1,0 +1,209 @@
+.gift-reveal {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(5rem, 13vh, 9rem) 1.5rem;
+  background:
+    radial-gradient(
+      circle at 18% 26%,
+      color-mix(in oklch, var(--colour-rose-accent) 14%, transparent),
+      transparent 48%
+    ),
+    radial-gradient(
+      circle at 82% 20%,
+      color-mix(in oklch, var(--colour-gold-accent) 14%, transparent),
+      transparent 55%
+    ),
+    transparent;
+  overflow: hidden;
+}
+
+.gift-reveal::before,
+.gift-reveal::after {
+  content: '';
+  position: absolute;
+  border: 1px solid color-mix(in oklch, var(--colour-card-border) 88%, transparent);
+  pointer-events: none;
+}
+
+.gift-reveal::before {
+  inset: clamp(1rem, 2.2vw, 1.8rem);
+}
+
+.gift-reveal::after {
+  inset: clamp(1.7rem, 3.5vw, 2.9rem);
+  border-color: color-mix(in oklch, var(--colour-rose-accent) 20%, transparent);
+}
+
+.gift-reveal__stage {
+  position: relative;
+  width: min(94vw, 720px);
+  min-height: 560px;
+  display: grid;
+  place-items: center;
+}
+
+.gift-box-wrapper {
+  position: relative;
+  width: min(84vw, 356px);
+  aspect-ratio: 13 / 10;
+}
+
+.box-body,
+.flap-left,
+.flap-right,
+.flap-front,
+.flap-rear,
+.box-lid {
+  position: absolute;
+  background: repeating-linear-gradient(
+    45deg,
+    var(--colour-surface-tint),
+    var(--colour-surface-tint) 12px,
+    var(--colour-gold-accent) 12px,
+    var(--colour-gold-accent) 16px
+  );
+}
+
+.box-body {
+  inset: 18% 10% 0;
+  border-radius: 0.9rem;
+  box-shadow:
+    0 28px 56px color-mix(in oklch, var(--colour-text-dark) 24%, transparent),
+    inset 0 0 0 1px color-mix(in oklch, var(--colour-white) 30%, transparent);
+  z-index: 1;
+}
+
+.flap-left,
+.flap-right,
+.flap-front,
+.flap-rear {
+  top: 18%;
+  height: 56%;
+  width: 44%;
+  border-radius: 0.9rem;
+  backface-visibility: hidden;
+  z-index: 4;
+}
+
+.flap-left {
+  left: 10%;
+  transform-origin: left center;
+}
+
+.flap-right {
+  right: 10%;
+  transform-origin: right center;
+}
+
+.flap-front {
+  left: 10%;
+  top: 34%;
+  width: 80%;
+  height: 40%;
+  transform-origin: center bottom;
+  z-index: 5;
+}
+
+.flap-rear {
+  left: 10%;
+  top: 18%;
+  width: 80%;
+  height: 40%;
+  transform-origin: center top;
+  z-index: 3;
+}
+
+.box-lid {
+  left: 6%;
+  right: 6%;
+  top: 8%;
+  height: 26%;
+  border-radius: 1rem;
+  box-shadow:
+    0 20px 36px color-mix(in oklch, var(--colour-text-dark) 22%, transparent),
+    inset 0 0 0 1px color-mix(in oklch, var(--colour-white) 34%, transparent);
+  transform-origin: center bottom;
+  z-index: 6;
+}
+
+.ribbon-h,
+.ribbon-v {
+  position: absolute;
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklch, var(--colour-gold-accent) 80%, var(--colour-white)) 0%,
+    var(--colour-gold-accent) 100%
+  );
+  border-radius: 999px;
+  transform-origin: center;
+}
+
+.ribbon-h {
+  top: 19%;
+  left: 6%;
+  right: 6%;
+  height: 14px;
+}
+
+.ribbon-v {
+  top: 8%;
+  bottom: 66%;
+  left: calc(50% - 7px);
+  width: 14px;
+}
+
+.bow {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  width: 58px;
+  height: 42px;
+  transform: translateX(-50%);
+}
+
+.bow-loop {
+  position: absolute;
+  width: 30px;
+  height: 34px;
+  background: color-mix(in oklch, var(--colour-rose-accent) 35%, var(--colour-gold-accent));
+  border-radius: 62% 38% 60% 40%;
+}
+
+.bow-loop-left {
+  left: 0;
+  transform: rotate(-40deg);
+}
+
+.bow-loop-right {
+  right: 0;
+  transform: rotate(40deg);
+}
+
+.record-player-wrapper {
+  position: absolute;
+  width: min(88vw, 420px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+@media (max-width: 767px) {
+  .gift-reveal__stage {
+    min-height: 460px;
+  }
+
+  .gift-reveal::before {
+    inset: 0.7rem;
+  }
+
+  .gift-reveal::after {
+    inset: 1.2rem;
+  }
+
+  .flap-left,
+  .flap-right {
+    height: 52%;
+  }
+}

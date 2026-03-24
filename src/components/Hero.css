@@ -1,0 +1,126 @@
+.hero {
+  position: relative;
+  display: grid;
+  align-items: end;
+  min-height: 100vh;
+  overflow: hidden;
+  padding: clamp(5rem, 14vh, 9rem) clamp(1.25rem, 4vw, 4rem);
+  background:
+    linear-gradient(
+      118deg,
+      color-mix(in oklch, var(--colour-white) 72%, var(--colour-lavender) 28%) 0%,
+      color-mix(in oklch, var(--colour-purple-light) 72%, var(--colour-lavender) 28%) 42%,
+      color-mix(in oklch, var(--colour-lavender) 74%, var(--colour-purple-light) 26%) 100%
+    );
+  border-bottom: 1px solid color-mix(in oklch, var(--colour-section-rule) 70%, transparent);
+}
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+  max-width: min(84vw, 920px);
+  text-align: left;
+  padding-left: clamp(0rem, 2.5vw, 2rem);
+}
+
+.hero__eyebrow {
+  margin-bottom: 0.75rem;
+  color: color-mix(in oklch, var(--colour-text-dark) 78%, var(--colour-gold-accent));
+  font-family: var(--font-body);
+  font-size: clamp(0.78rem, 1vw, 0.92rem);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(16px);
+  animation: fadeUp 0.7s ease forwards;
+}
+
+.hero__title {
+  max-width: 15ch;
+  color: color-mix(in oklch, var(--colour-text-dark) 94%, var(--colour-plum-ink));
+  font-family: var(--font-heading);
+  font-size: clamp(3.4rem, 8.4vw, 8.2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+  opacity: 0;
+  transform: translateY(28px);
+  animation: fadeUp 0.9s ease 0.12s forwards;
+}
+
+.hero__subtitle {
+  margin-top: 1.1rem;
+  max-width: 36ch;
+  color: color-mix(in oklch, var(--colour-text-dark) 80%, var(--colour-rose-accent));
+  font-family: var(--font-accent);
+  font-size: clamp(1.2rem, 2.8vw, 2rem);
+  line-height: 1.2;
+  font-style: italic;
+  opacity: 0;
+  transform: translateY(24px);
+  animation: fadeUp 0.9s ease 0.36s forwards;
+}
+
+.hero__stamp {
+  position: absolute;
+  right: clamp(1.25rem, 5vw, 5rem);
+  bottom: clamp(2rem, 8vh, 5.2rem);
+  z-index: 2;
+  padding: 0.45rem 1rem;
+  border: 1px solid color-mix(in oklch, var(--colour-gold-accent) 65%, transparent);
+  border-radius: 999px;
+  color: color-mix(in oklch, var(--colour-text-dark) 86%, var(--colour-gold-accent));
+  font-family: var(--font-body);
+  font-size: clamp(0.82rem, 1.2vw, 0.95rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: color-mix(in oklch, var(--colour-white) 85%, var(--colour-lavender));
+  box-shadow: 0 8px 24px color-mix(in oklch, var(--colour-plum-ink) 16%, transparent);
+  font-family: var(--font-body);
+}
+
+.hero__orbs {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(22px);
+  opacity: 0.5;
+  pointer-events: none;
+  animation: float var(--duration) ease-in-out infinite alternate;
+}
+
+@media (max-width: 767px) {
+  .hero {
+    align-items: center;
+    padding-top: clamp(5rem, 16vh, 8rem);
+  }
+
+  .hero__title {
+    max-width: 12ch;
+  }
+
+  .hero__subtitle {
+    max-width: 24ch;
+  }
+
+  .hero__stamp {
+    bottom: 1.25rem;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

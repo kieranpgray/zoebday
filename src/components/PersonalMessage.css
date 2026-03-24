@@ -1,0 +1,80 @@
+.personal-message {
+  position: relative;
+  padding: clamp(4.5rem, 12vh, 9rem) 1.25rem;
+  background:
+    radial-gradient(
+      circle at 14% 18%,
+      color-mix(in oklch, var(--colour-gold-accent) 10%, transparent) 0%,
+      transparent 46%
+    ),
+    radial-gradient(
+      circle at 86% 78%,
+      color-mix(in oklch, var(--colour-rose-accent) 12%, transparent) 0%,
+      transparent 50%
+    ),
+    transparent;
+  border-bottom: 1px solid color-mix(in oklch, var(--colour-section-rule) 68%, transparent);
+}
+
+.message-card {
+  position: relative;
+  max-width: min(92vw, 760px);
+  margin: 0 auto;
+  padding: clamp(2rem, 5vw, 3.5rem);
+  border: 1px solid color-mix(in oklch, var(--colour-card-border) 86%, var(--colour-gold-accent));
+  border-radius: 0.45rem;
+  background: var(--colour-white);
+  box-shadow:
+    0 24px 52px color-mix(in oklch, var(--colour-plum-ink) 14%, transparent),
+    0 0 0 8px color-mix(in oklch, var(--colour-white) 70%, transparent);
+}
+
+.message-card::before {
+  content: '';
+  position: absolute;
+  inset: 0.65rem;
+  border: 1px dashed color-mix(in oklch, var(--colour-rose-accent) 36%, transparent);
+  pointer-events: none;
+}
+
+.message-heart {
+  display: inline-flex;
+  margin-bottom: 1.6rem;
+  color: var(--colour-rose-accent);
+}
+
+.message-heart svg {
+  width: 1.75rem;
+  height: 1.75rem;
+  fill: currentColor;
+}
+
+.message-content {
+  display: grid;
+  gap: 1.1rem;
+}
+
+.message-content p {
+  margin: 0;
+  color: var(--colour-text-dark);
+  font-size: clamp(1.02rem, 1.6vw, 1.2rem);
+  line-height: 1.92;
+}
+
+.message-copy {
+  white-space: pre-line;
+  font-family: var(--font-body);
+}
+
+.message-copy::first-line {
+  font-family: var(--font-accent);
+  font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+  line-height: 1.15;
+  color: color-mix(in oklch, var(--colour-text-dark) 84%, var(--colour-rose-accent));
+}
+
+@media (max-width: 767px) {
+  .message-card {
+    padding: 1.65rem;
+  }
+}

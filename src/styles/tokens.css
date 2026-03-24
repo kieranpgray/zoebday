@@ -1,0 +1,31 @@
+:root {
+  /* Colours */
+  --colour-lavender: oklch(0.91 0.032 325);
+  --colour-purple-deep: oklch(0.35 0.08 316);
+  --colour-purple-mid: oklch(0.58 0.12 320);
+  --colour-purple-light: oklch(0.965 0.02 328);
+  --colour-white: oklch(0.995 0.004 40);
+  --colour-text-dark: oklch(0.23 0.045 314);
+  --colour-text-light: oklch(0.94 0.02 328);
+  --colour-gold-accent: oklch(0.8 0.09 83);
+  --colour-rose-accent: oklch(0.74 0.11 17);
+  --colour-surface-tint: oklch(0.45 0.09 320);
+  --colour-plum-ink: oklch(0.25 0.06 315);
+  --colour-page-bg: oklch(0.992 0.004 320);
+  --colour-card-bg: oklch(0.955 0.022 324);
+  --colour-card-border: oklch(0.84 0.03 320);
+  --colour-section-rule: oklch(0.8 0.03 322);
+  --colour-info: oklch(0.72 0.12 240);
+  --colour-success: oklch(0.76 0.13 150);
+  --colour-warning: oklch(0.82 0.14 75);
+  --colour-error: oklch(0.66 0.18 20);
+
+  /* Typography */
+  --font-heading: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Manrope', 'Segoe UI', sans-serif;
+  --font-accent: 'DM Serif Display', Georgia, serif;
+
+  /* Spacing */
+  --section-padding: clamp(4rem, 10vh, 8rem);
+  --max-content-width: 700px;
+}
